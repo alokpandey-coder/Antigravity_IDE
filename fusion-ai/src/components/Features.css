@@ -1,0 +1,65 @@
+.features {
+    padding: 5rem 5%;
+    background: #000;
+    text-align: center;
+}
+
+.features-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+}
+
+.feature-card {
+    background: #050505;
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    flex: 1;
+    min-width: 300px;
+    max-width: 350px;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.glow-purple {
+    box-shadow: 0 10px 40px -10px rgba(189, 0, 255, 0.3);
+    border-bottom: 2px solid #bd00ff;
+}
+
+.glow-blue {
+    box-shadow: 0 10px 40px -10px rgba(0, 242, 255, 0.3);
+    border-bottom: 2px solid #00f2ff;
+}
+
+.glow-gold {
+    box-shadow: 0 10px 40px -10px rgba(255, 215, 0, 0.3);
+    border-bottom: 2px solid gold;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
+
+.secondary-grid .feature-card {
+    background: linear-gradient(180deg, #0a0a0a 0%, #150020 100%);
+}

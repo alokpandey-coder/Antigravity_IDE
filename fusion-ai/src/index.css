@@ -1,0 +1,71 @@
+:root {
+    --color-bg: #000000;
+    --color-card: #0a0a0a;
+    --color-primary: #bd00ff;
+    --color-secondary: #00f2ff;
+    --color-accent: #ff0055;
+    --color-text: #ffffff;
+    --color-text-muted: #a0a0a0;
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --gradient-main: linear-gradient(135deg, #bd00ff 0%, #00f2ff 100%);
+    --gradient-glow: radial-gradient(circle at center, rgba(189, 0, 255, 0.15) 0%, transparent 70%);
+    --shadow-glow: 0 0 30px rgba(189, 0, 255, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-bg);
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(189, 0, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 242, 255, 0.05) 0%, transparent 40%);
+    color: var(--color-text);
+    font-family: var(--font-family);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-text);
+    transition: all 0.3s ease;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Section Title Style */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-main);
+    margin: 1rem auto 0;
+    border-radius: 2px;
+}

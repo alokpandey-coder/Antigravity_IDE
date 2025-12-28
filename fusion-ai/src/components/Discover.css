@@ -1,0 +1,77 @@
+.discover {
+    padding: 5rem 5%;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.discover-container {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.trading-robot {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(189, 0, 255, 0.2);
+}
+
+.discover-content h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(90deg, #fff, #a0a0a0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.discover-card {
+    background: rgba(189, 0, 255, 0.05);
+    border: 1px solid rgba(189, 0, 255, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(189, 0, 255, 0.1);
+}
+
+.highlight-text {
+    color: var(--color-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.discover-list {
+    list-style: none;
+}
+
+.discover-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.discover-list li::before {
+    content: '•';
+    color: var(--color-secondary);
+    position: absolute;
+    left: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    top: -2px;
+}
+
+@media (max-width: 968px) {
+    .discover-container {
+        grid-template-columns: 1fr;
+    }
+
+    .discover-image {
+        order: 2;
+    }
+}
