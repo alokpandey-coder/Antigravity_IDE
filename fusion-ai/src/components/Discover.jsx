@@ -7,7 +7,7 @@ const Discover = () => {
         <section className="discover" id="offerings">
             <div className="discover-container">
                 <div className="discover-image">
-                    <img src={tradingRobot} alt="AI Trading Algorithm" className="trading-robot" />
+                    <img src={tradingRobot} alt="AI Trading Algorithm" className="trading-robot glowing" />
                 </div>
                 <div className="discover-content">
                     <h2>Discover Our Powerful<br />Trading Algorithm !</h2>

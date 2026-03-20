@@ -8,7 +8,7 @@ const WhyChooseUs = () => {
             <h2 className="section-title">Streamline Your Trading Process</h2>
             <div className="why-container">
                 <div className="why-image">
-                    <img src={teamRobots} alt="FusionAI Team" className="team-robots" />
+                    <img src={teamRobots} alt="FusionAI Team" className="team-robots floating" />
                 </div>
                 <div className="why-content">
                     <div className="streamline-item">

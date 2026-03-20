@@ -64,10 +64,38 @@
     box-shadow: 0 0 30px rgba(189, 0, 255, 0.6);
 }
 
+.dashboard-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem 1.8rem;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.dashboard-btn:hover {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: #3b82f6;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    transform: translateY(-2px);
+}
+
+.dashboard-btn .icon {
+    font-size: 1.2rem;
+}
+
 .hero-image-container {
     position: relative;
     display: flex;
     justify-content: center;
+    perspective: 1000px;
+    /* Add 3D depth */
 }
 
 .hero-robot {

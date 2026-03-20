@@ -18,9 +18,11 @@ const Footer = () => {
                 </div>
                 <div className="footer-social">
                     <h4>Social</h4>
-                    <a href="#">Twitter</a>
-                    <a href="#">Discord</a>
-                    <a href="#">Telegram</a>
+                    <div style={{ display: 'flex', gap: '10px' }}>
+                        <a href="#" aria-label="Twitter">𝕏</a>
+                        <a href="#" aria-label="Discord">💬</a>
+                        <a href="#" aria-label="Telegram">✈️</a>
+                    </div>
                 </div>
             </div>
             <div className="footer-bottom">

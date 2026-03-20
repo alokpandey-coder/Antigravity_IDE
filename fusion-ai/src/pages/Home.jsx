@@ -7,20 +7,26 @@ import WhyChooseUs from '../components/WhyChooseUs';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
 import Disclaimer from '../components/Disclaimer';
+import RiskMeter from '../components/RiskMeter';
+import StrategyEngine from '../components/StrategyEngine';
 import Footer from '../components/Footer';
+import AIChatbot from '../components/AIChatbot';
 
 const Home = () => {
     return (
         <>
             <Hero />
             <Features />
-            <Discover />
             <Offerings />
+            <Discover />
+            <RiskMeter />
+            <StrategyEngine />
             <WhyChooseUs />
             <Testimonials />
             <FAQ />
             <Disclaimer />
             <Footer />
+            <AIChatbot />
         </>
     );
 };

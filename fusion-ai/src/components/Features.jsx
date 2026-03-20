@@ -23,15 +23,12 @@ const Features = () => {
                     <h3>Profit-Sharing Model</h3>
                     <p>You only pay when you make profit, our success is tied directly to yours.</p>
                 </div>
-            </div>
-
-            <div className="features-grid secondary-grid">
-                <div className="feature-card">
+                <div className="feature-card glow-red">
                     <div className="feature-icon">📈</div>
                     <h3>Risk Management Built-In</h3>
                     <p>FusionAI automates stop-losses, sizing, and allocation—no manual tweaks needed.</p>
                 </div>
-                <div className="feature-card">
+                <div className="feature-card glow-green">
                     <div className="feature-icon">🎁</div>
                     <h3>Designed for Busy Professionals</h3>
                     <p>No charts. No stress. Just passive income with FusionAI.</p>

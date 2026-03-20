@@ -11,17 +11,16 @@ const Hero = () => {
                 </div>
                 <div className="hero-content">
                     <h1>
-                        <span className="gradient-text">ZipLip Technologies</span>
+                        <span className="gradient-text">FusionAI</span>
                         <br />
                         Revolutionizing forex trading with advanced algorithmic solutions.
                     </h1>
                     <p>Combines financial expertise with cutting-edge technology. Provides automated tools for consistent, simplified trading.</p>
                     <div className="hero-buttons">
                         <button className="btn-primary">Discover Our Powerful Trading Algorithm !</button>
-                        <div className="stats-badge">
-                            <span className="stat-value">99%</span>
-                            <span className="stat-label">Accuracy</span>
-                        </div>
+                        <a href="#/dashboard" className="btn-secondary dashboard-btn">
+                            <span className="icon">📊</span> Live Market Dashboard
+                        </a>
                     </div>
                 </div>
                 <div className="hero-image-container desktop-only">

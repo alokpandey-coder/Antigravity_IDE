@@ -1,71 +1,87 @@
 :root {
-    --color-bg: #000000;
-    --color-card: #0a0a0a;
-    --color-primary: #bd00ff;
-    --color-secondary: #00f2ff;
-    --color-accent: #ff0055;
+    --color-primary: #3b82f6;
+    --color-secondary: #8b5cf6;
+    --color-bg: #0a0a0a;
     --color-text: #ffffff;
-    --color-text-muted: #a0a0a0;
-    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    --gradient-main: linear-gradient(135deg, #bd00ff 0%, #00f2ff 100%);
-    --gradient-glow: radial-gradient(circle at center, rgba(189, 0, 255, 0.15) 0%, transparent 70%);
-    --shadow-glow: 0 0 30px rgba(189, 0, 255, 0.3);
+    --color-text-muted: #a1a1aa;
 }
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
 }
 
 body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background-color: var(--color-bg);
-    background-image:
-        radial-gradient(circle at 10% 20%, rgba(189, 0, 255, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(0, 242, 255, 0.05) 0%, transparent 40%);
     color: var(--color-text);
-    font-family: var(--font-family);
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: 700;
-    line-height: 1.2;
+/* Dynamic Animations */
+@keyframes float-dynamic {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
 
-a {
-    text-decoration: none;
-    color: var(--color-text);
-    transition: all 0.3s ease;
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
+    }
+
+    100% {
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+    }
 }
 
-button {
+@keyframes rotate-slow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Apply to images */
+img.floating {
+    animation: float-dynamic 6s ease-in-out infinite;
+}
+
+img.glowing {
+    animation: pulse-glow 3s infinite;
+    border-radius: 50%;
+}
+
+img.rotating {
+    animation: rotate-slow 20s linear infinite;
+}
+
+/* Global Button Styles to ensure consistency */
+.btn-primary,
+.btn-secondary {
     cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Section Title Style */
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    position: relative;
-    display: inline-block;
-    width: 100%;
-}
-
-.section-title::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: var(--gradient-main);
-    margin: 1rem auto 0;
-    border-radius: 2px;
+.btn-primary:hover,
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
 }

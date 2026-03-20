@@ -4,30 +4,42 @@
     text-align: center;
 }
 
-.testimonials-grid {
-    max-width: 1200px;
+.testimonials-carousel {
+    max-width: 800px;
     margin: 0 auto;
+    position: relative;
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 3rem;
-    flex-wrap: wrap;
+    min-height: 300px;
 }
 
 .testimonial-card {
     background: #0f0f0f;
     padding: 3rem;
     border-radius: 30px;
-    flex: 1;
-    min-width: 350px;
-    max-width: 500px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+    animation: fadeEffect 0.5s ease-in-out;
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0.4;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .testimonial-text {
     font-style: italic;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #d0d0d0;
     margin-bottom: 2rem;
     line-height: 1.8;
@@ -43,13 +55,13 @@
 .avatar-placeholder {
     width: 60px;
     height: 60px;
-    background: #d9e2ec;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color: #000;
+    color: #fff;
     font-size: 1.5rem;
 }
 
@@ -57,9 +69,78 @@
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: #fff;
 }
 
 .author-info p {
     color: var(--color-text-muted);
     font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Carousel Controls */
+.carousel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: #3b82f6;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+}
+
+.prev-btn {
+    left: -50px;
+}
+
+.next-btn {
+    right: -50px;
+}
+
+/* Dots */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 2rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: #333;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dot.active {
+    background: #3b82f6;
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+@media (max-width: 768px) {
+    .prev-btn {
+        left: 0;
+    }
+
+    .next-btn {
+        right: 0;
+    }
+
+    .testimonial-card {
+        padding: 2rem 1rem;
+    }
 }

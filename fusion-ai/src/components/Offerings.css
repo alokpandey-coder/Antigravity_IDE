@@ -54,3 +54,13 @@
     line-height: 1.8;
     color: var(--color-text);
 }
+
+@media (max-width: 768px) {
+    .offering-header h2 {
+        font-size: 2rem;
+    }
+    .offering-block {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+}

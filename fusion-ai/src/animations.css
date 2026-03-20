@@ -1,0 +1,28 @@
+/* 3D Animations */
+@keyframes rotate-3d-dynamic {
+    0% {
+        transform: rotateY(0deg) rotateX(0deg);
+    }
+
+    25% {
+        transform: rotateY(10deg) rotateX(5deg);
+    }
+
+    50% {
+        transform: rotateY(0deg) rotateX(0deg);
+    }
+
+    75% {
+        transform: rotateY(-10deg) rotateX(-5deg);
+    }
+
+    100% {
+        transform: rotateY(0deg) rotateX(0deg);
+    }
+}
+
+/* Apply 3D animation to heroes */
+.hero-robot.floating {
+    animation: float-dynamic 6s ease-in-out infinite, rotate-3d-dynamic 10s ease-in-out infinite;
+    transform-style: preserve-3d;
+}

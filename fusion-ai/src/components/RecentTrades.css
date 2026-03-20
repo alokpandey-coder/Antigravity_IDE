@@ -1,0 +1,72 @@
+.recent-trades-panel {
+    background: rgba(10, 11, 30, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.recent-trades-panel h3 {
+    font-size: 1rem;
+    color: #aaa;
+    margin-bottom: 0.5rem;
+}
+
+.trades-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #666;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.trades-list {
+    flex: 1;
+    overflow-y: hidden;
+    /* Hide scrollbar for cleaner look, simulated infinite scroll feal */
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.trade-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+    font-size: 0.85rem;
+    animation: slideDown 0.2s ease-out;
+}
+
+.trade-row.buy .price {
+    color: #00ff88;
+}
+
+.trade-row.sell .price {
+    color: #ff3333;
+}
+
+.amount {
+    color: #ddd;
+}
+
+.time {
+    color: #888;
+    font-size: 0.75rem;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

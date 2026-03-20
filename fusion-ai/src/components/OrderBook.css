@@ -1,0 +1,90 @@
+.order-book-panel {
+    background: rgba(10, 11, 30, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.order-book-panel h3 {
+    font-size: 1rem;
+    color: #aaa;
+    margin-bottom: 0.5rem;
+}
+
+.book-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #666;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.book-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.book-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+    font-size: 0.85rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.book-row:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.book-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    opacity: 0.15;
+    z-index: 0;
+}
+
+.book-row.ask .price {
+    color: #ff3333;
+}
+
+.book-row.ask .book-bar {
+    background: #ff3333;
+}
+
+.book-row.bid .price {
+    color: #00ff88;
+}
+
+.book-row.bid .book-bar {
+    background: #00ff88;
+}
+
+.price,
+.size {
+    z-index: 1;
+}
+
+.size {
+    color: #aaa;
+}
+
+.spread-display {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #fff;
+    padding: 0.5rem 0;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.02);
+    margin: 4px 0;
+}
