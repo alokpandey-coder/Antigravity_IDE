@@ -1,0 +1,123 @@
+/* Live Data Modal - Appended to Hero.css */
+.live-data-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 15, 30, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.live-data-modal-content {
+    background: var(--color-charcoal, #1A1A2E);
+    border: 1px solid rgba(75, 123, 255, 0.2);
+    border-radius: 16px;
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    animation: fadeEffect 0.3s ease-in-out;
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal-btn:hover {
+    color: #fff;
+}
+
+.live-data-modal-content h3 {
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.modal-subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.market-data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.market-asset-card {
+    background: var(--color-navy, #0A0F1E);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.market-asset-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(75, 123, 255, 0.3);
+}
+
+.asset-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.asset-symbol {
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.asset-change {
+    font-weight: 600;
+}
+
+.asset-change.positive {
+    color: #0ecb81;
+}
+
+.asset-change.negative {
+    color: #e84949;
+}
+
+.asset-price {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 0.2rem;
+}
+
+.asset-volume {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 3rem;
+    color: #4b7bff;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .market-data-grid {
+        grid-template-columns: 1fr;
+    }
+}

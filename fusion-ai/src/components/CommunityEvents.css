@@ -1,0 +1,213 @@
+.community-events-section {
+    padding: 8rem 0;
+    background: #0d0d0d;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center center;
+    overflow: hidden;
+    color: #ffffff;
+    box-shadow: inset 0 20px 50px rgba(0,0,0,0.8);
+}
+
+.ce-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.ce-pill {
+    display: inline-block;
+    background: var(--color-primary);
+    color: #ffffff;
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 8px 25px rgba(243, 108, 45, 0.4);
+    letter-spacing: 0.5px;
+}
+
+.ce-subtitle {
+    font-size: 1.2rem;
+    color: #cccccc;
+    font-weight: 500;
+}
+
+.ce-track-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+}
+
+.ce-track-container::before,
+.ce-track-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.ce-track-container::before {
+    left: 0;
+    background: linear-gradient(to right, #0d0d0d, transparent);
+}
+
+.ce-track-container::after {
+    right: 0;
+    background: linear-gradient(to left, #0d0d0d, transparent);
+}
+
+.ce-scroll {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    animation: ce-scroll-left 50s linear infinite;
+    padding: 0 30px;
+}
+
+.ce-scroll.reverse {
+    animation: ce-scroll-right 55s linear infinite;
+}
+
+.ce-scroll:hover, .ce-scroll.reverse:hover {
+    animation-play-state: paused;
+}
+
+.ce-card {
+    position: relative;
+    width: 340px;
+    height: 240px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #1a1a1a;
+    flex-shrink: 0;
+}
+
+.ce-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(255,255,255,0.1);
+}
+
+.ce-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.ce-card:hover img {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.ce-card-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+}
+
+.ce-card-content h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.ce-card-content p {
+    font-size: 0.85rem;
+    color: #dddddd;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.ce-play-btn {
+    width: 48px;
+    height: 48px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    margin-top: auto;
+    margin-bottom: auto;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.ce-card:hover .ce-play-btn {
+    background: #f37b1d;
+    border-color: #f37b1d;
+    transform: scale(1.1);
+}
+
+.ce-play-btn::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-left: 14px solid #fff;
+    border-bottom: 8px solid transparent;
+    margin-left: 4px;
+}
+
+/* Feature/Solid color cards overriding image behaviors */
+.ce-feature-card {
+    background: var(--color-primary);
+    box-shadow: 0 10px 30px rgba(243, 108, 45, 0.3);
+}
+
+.ce-feature-card.green {
+    background: var(--color-secondary);
+    box-shadow: 0 10px 30px rgba(0, 200, 150, 0.3);
+}
+
+.ce-feature-card .ce-card-content {
+    background: transparent; /* Remove gradient overlay for solid cards */
+}
+
+.ce-feature-card h3 {
+    font-size: 1.6rem;
+}
+
+.ce-feature-card:hover {
+    box-shadow: 0 15px 40px rgba(255,255,255,0.2);
+}
+
+@keyframes ce-scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 15px)); }
+}
+
+@keyframes ce-scroll-right {
+    0% { transform: translateX(calc(-50% - 15px)); }
+    100% { transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+    .ce-pill {
+        font-size: 1.4rem;
+    }
+    .ce-card {
+        width: 280px;
+        height: 200px;
+    }
+}

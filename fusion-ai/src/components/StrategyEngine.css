@@ -1,74 +1,215 @@
 .strategy-engine-section {
-    padding: 5rem 5%;
-    background: linear-gradient(180deg, #0a0a0a 0%, #151515 100%);
+    padding: 6rem 5%;
+    background: #0a0a1a;
     text-align: center;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
 }
 
-.strategy-container h2 {
-    font-size: 2.5rem;
+/* Background Particles */
+.particles-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #4A90E2;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 2px rgba(74, 144, 226, 0.6);
+    animation: float 20s infinite linear;
+}
+
+.p-1 { top: 20%; left: 10%; animation-duration: 25s; background: #FF6B00; }
+.p-2 { top: 60%; left: 80%; animation-duration: 22s; width: 6px; height: 6px; }
+.p-3 { top: 80%; left: 30%; animation-duration: 28s; background: #9b59b6; }
+.p-4 { top: 30%; left: 70%; animation-duration: 20s; width: 3px; height: 3px; background: #FF6B00; }
+
+@keyframes float {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+}
+
+/* Ambient Glow */
+.ambient-glow {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(74,144,226,0.2) 0%, rgba(155,89,182,0.1) 50%, transparent 70%);
+    z-index: 1;
+    filter: blur(40px);
+}
+
+.strategy-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header-wrapper {
+    margin-bottom: 4rem;
+}
+
+.gradient-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     margin-bottom: 0.5rem;
-    background: linear-gradient(45deg, #fff, #aaa);
+    font-weight: 800;
+    background: linear-gradient(45deg, #4A90E2, #FF6B00);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.subtitle {
-    color: #666;
-    margin-bottom: 3rem;
-    font-size: 1.1rem;
+.subtitle.shimmer {
+    color: #a1a1aa;
+    font-size: 1.2rem;
+    background: linear-gradient(90deg, #a1a1aa, #ffffff, #a1a1aa);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    to { background-position: 200% center; }
+}
+
+.strategy-flow {
+    position: relative;
+}
+
+/* Connecting Line */
+.connection-line-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 100px;
+    transform: translateY(-50%);
+    z-index: -1;
+    opacity: 0.6;
+}
+
+.flow-path {
+    stroke: rgba(255, 255, 255, 0.15);
+    stroke-width: 2;
+    stroke-dasharray: 10, 10;
+    animation: moveDash 2s linear infinite;
+}
+
+@keyframes moveDash {
+    to { stroke-dashoffset: -20; }
 }
 
 .strategy-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
-.strategy-card {
-    background: #0f0f0f;
-    border: 1px solid #222;
-    padding: 2rem;
-    border-radius: 16px;
-    transition: all 0.3s ease;
-    cursor: pointer;
+/* Glassmorphism Cards */
+.glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: slideUpFade 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.glass-card.delay-0 { animation-delay: 0.1s; }
+.glass-card.delay-1 { animation-delay: 0.3s; }
+.glass-card.delay-2 { animation-delay: 0.5s; }
+
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.glass-card:hover {
+    transform: translateY(-15px);
+    border-color: #FF6B00;
+    box-shadow: 0 20px 60px rgba(0, 150, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.icon-wrapper {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
     position: relative;
-    overflow: hidden;
 }
 
-.strategy-card:hover {
-    transform: translateY(-5px);
-    border-color: #3b82f6;
-    background: #131313;
-    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+.dynamic-icon {
+    width: 36px;
+    height: 36px;
+    color: #4A90E2;
+    animation: pulseIcon 3s infinite;
 }
 
-.strategy-icon {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+@keyframes pulseIcon {
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(74,144,226,0.6)); transform: scale(1); }
+    50% { filter: drop-shadow(0 0 15px rgba(74,144,226,0.9)); transform: scale(1.1); }
 }
 
-.strategy-card h3 {
-    color: #fff;
+/* Optional rotation for RL icon */
+.animate-spin-slow {
+    animation: spinSlow 8s linear infinite, pulseIcon 3s infinite;
+}
+
+@keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.card-title {
+    font-size: 1.4rem;
+    color: #ffffff;
     margin-bottom: 1rem;
-    font-size: 1.3rem;
+    font-weight: 600;
 }
 
-.strategy-desc {
-    color: #888;
+.card-desc {
+    font-size: 1rem;
+    color: #a1a1aa;
     line-height: 1.6;
-    font-size: 0.95rem;
 }
 
-/* Active state simulation if selected/tapped */
-.strategy-card.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+@media (max-width: 968px) {
+    .strategy-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .connection-line-container {
+        display: none;
+    }
+    
+    .glass-card {
+        padding: 2.5rem 1.5rem;
+    }
+    
+    .p-3, .p-4 {
+        display: none;
+    }
 }

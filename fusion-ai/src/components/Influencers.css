@@ -1,0 +1,165 @@
+.influencers-section {
+    padding: 6rem 0;
+    background: #ffffff;
+    background-image: radial-gradient(#f0f0f0 1px, transparent 1px);
+    background-size: 20px 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.influencers-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.influencers-header .accent {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.influencers-header h2 {
+    font-size: clamp(1.8rem, 5vw, 4rem);
+    color: #111111;
+    margin: 0;
+    font-weight: 800;
+}
+
+.influencers-track-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Fading edges */
+.influencers-track-container::before,
+.influencers-track-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.influencers-track-container::before {
+    left: 0;
+    background: linear-gradient(to right, #ffffff, transparent);
+}
+
+.influencers-track-container::after {
+    right: 0;
+    background: linear-gradient(to left, #ffffff, transparent);
+}
+
+.influencers-scroll {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: scroll-left 40s linear infinite;
+    padding: 0 20px;
+}
+
+.influencers-scroll:hover {
+    animation-play-state: paused;
+}
+
+.influencer-card {
+    position: relative;
+    width: 250px;
+    height: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.influencer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(243, 123, 29, 0.2);
+}
+
+.influencer-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.influencer-card:hover img {
+    transform: scale(1.05);
+}
+
+.influencer-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 20px;
+}
+
+.influencer-name {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: 1px;
+}
+
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 10px)); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+    .influencers-track-container {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow: hidden !important;
+        width: 100% !important;
+    }
+
+    .influencers-scroll {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        width: max-content !important;
+        animation: marquee 20s linear infinite !important;
+        gap: 12px !important;
+        padding: 0 !important;
+    }
+
+    .influencer-card {
+        width: 160px !important;
+        height: auto !important;
+        flex: 0 0 auto !important;
+        border-radius: 12px !important;
+    }
+    
+    .influencer-card img {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 12px !important;
+    }
+
+    .influencer-name {
+        font-size: 14px !important;
+    }
+}

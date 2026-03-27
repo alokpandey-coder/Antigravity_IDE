@@ -1,7 +1,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 
-const TradingChart = ({ symbol, onPriceUpdate, chartType = 'line' }) => {
+const TradingChart = ({ symbol, onPriceUpdate, chartType = 'line', timeframe = '1H' }) => {
     const canvasRef = useRef(null);
     const [priceData, setPriceData] = useState([]);
     const [candleData, setCandleData] = useState([]);
@@ -25,7 +25,7 @@ const TradingChart = ({ symbol, onPriceUpdate, chartType = 'line' }) => {
             volume: Math.random() * 100
         }));
         setCandleData(initialCandles);
-    }, [symbol]);
+    }, [symbol, timeframe]);
 
     // Animation Loop
     useEffect(() => {
@@ -87,7 +87,7 @@ const TradingChart = ({ symbol, onPriceUpdate, chartType = 'line' }) => {
         if (chartType === 'line') {
             // Draw Line
             ctx.beginPath();
-            ctx.strokeStyle = '#00f2ff';
+            ctx.strokeStyle = '#f97316';
             ctx.lineWidth = 2;
             ctx.moveTo(getX(0), getY(priceData[0]));
 
@@ -99,7 +99,7 @@ const TradingChart = ({ symbol, onPriceUpdate, chartType = 'line' }) => {
             // Fill Area
             ctx.lineTo(width, height);
             ctx.lineTo(0, height);
-            ctx.fillStyle = 'rgba(0, 242, 255, 0.1)';
+            ctx.fillStyle = 'rgba(249, 115, 22, 0.1)';
             ctx.fill();
         } else {
             // Draw Candles
@@ -108,7 +108,7 @@ const TradingChart = ({ symbol, onPriceUpdate, chartType = 'line' }) => {
             candleData.forEach((candle, i) => {
                 const x = getX(i);
                 const isGreen = candle.close >= candle.open;
-                const color = isGreen ? '#00ff88' : '#ff3333';
+                const color = isGreen ? '#22c55e' : '#ef4444';
 
                 ctx.strokeStyle = color;
                 ctx.fillStyle = color;
@@ -145,7 +145,7 @@ const TradingChart = ({ symbol, onPriceUpdate, chartType = 'line' }) => {
     }, [priceData, candleData, chartType]);
 
     return (
-        <div style={{ width: '100%', height: '100%', background: '#0a0b1e', position: 'relative', borderRadius: '8px', overflow: 'hidden' }}>
+        <div style={{ width: '100%', height: '100%', background: '#0d1117', position: 'relative', borderRadius: '8px', overflow: 'hidden' }}>
             <canvas
                 ref={canvasRef}
                 width={800}

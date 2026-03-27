@@ -1,9 +1,13 @@
 :root {
-    --color-primary: #3b82f6;
-    --color-secondary: #8b5cf6;
-    --color-bg: #0a0a0a;
-    --color-text: #ffffff;
-    --color-text-muted: #a1a1aa;
+    --color-primary: #f36c2d;
+    --color-secondary: #00c896;
+    --color-bg: #f0f2f5;
+    --color-text: #333333;
+    --color-text-muted: #666666;
+    --gradient-main: linear-gradient(90deg, #f36c2d, #ff5722);
+    --color-navy: #0A0F1E;
+    --color-charcoal: #1A1A2E;
+    --color-offwhite: #F4F6FA;
 }
 
 *,
@@ -12,12 +16,54 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background-color: var(--color-bg);
     color: var(--color-text);
     line-height: 1.6;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+h1 {
+    font-size: clamp(1.8rem, 5vw, 4rem);
+}
+
+h2 {
+    font-size: clamp(1.4rem, 4vw, 2.8rem);
+}
+
+h3 {
+    font-size: clamp(1.1rem, 3vw, 1.8rem);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+section {
+    padding: 80px 5%;
+}
+
+@media (max-width: 1024px) {
+    /* Protect desktop styles above 1024 */
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 60px 24px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 40px 16px !important;
+    }
 }
 
 /* Dynamic Animations */
@@ -37,15 +83,15 @@ body {
 
 @keyframes pulse-glow {
     0% {
-        box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+        box-shadow: 0 0 10px rgba(243, 123, 29, 0.2);
     }
 
     50% {
-        box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
+        box-shadow: 0 0 25px rgba(243, 123, 29, 0.6);
     }
 
     100% {
-        box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+        box-shadow: 0 0 10px rgba(243, 123, 29, 0.2);
     }
 }
 
@@ -57,6 +103,11 @@ body {
     to {
         transform: rotate(360deg);
     }
+}
+
+/* Global Card & Radius standards */
+.card, .panel {
+    border-radius: 16px !important;
 }
 
 /* Apply to images */
@@ -78,10 +129,37 @@ img.rotating {
 .btn-secondary {
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 50px !important; /* Force pill shape globally */
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border: none;
 }
 
 .btn-primary:hover,
 .btn-secondary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 5px 15px rgba(243, 108, 45, 0.4);
+}
+
+/* Global Button Mobile Overrides */
+@media (max-width: 480px) {
+    .btn-primary, .btn-secondary {
+        min-height: 48px;
+        min-width: 100%;
+        padding: 12px 24px;
+        font-size: max(14px, 1rem); /* ensure readability */
+    }
+    
+    /* Remove hover-only effects for touch */
+    .btn-primary:active,
+    .btn-secondary:active,
+    button:active {
+        transform: scale(0.98);
+        box-shadow: none;
+    }
 }

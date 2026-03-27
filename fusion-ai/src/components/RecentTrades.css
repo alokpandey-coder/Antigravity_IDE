@@ -1,7 +1,6 @@
 .recent-trades-panel {
-    background: rgba(10, 11, 30, 0.6);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #111827;
+    border: 1px solid #1e293b;
     border-radius: 12px;
     padding: 1rem;
     height: 100%;
@@ -12,7 +11,7 @@
 
 .recent-trades-panel h3 {
     font-size: 1rem;
-    color: #aaa;
+    color: #94a3b8;
     margin-bottom: 0.5rem;
 }
 
@@ -20,9 +19,9 @@
     display: flex;
     justify-content: space-between;
     font-size: 0.8rem;
-    color: #666;
+    color: #94a3b8;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid #1e293b;
 }
 
 .trades-list {
@@ -37,25 +36,29 @@
 .trade-row {
     display: flex;
     justify-content: space-between;
-    padding: 3px 0;
+    padding: 4px;
     font-size: 0.85rem;
     animation: slideDown 0.2s ease-out;
 }
 
-.trade-row.buy .price {
-    color: #00ff88;
+/* Alternating Row Tint Setup per Requirements */
+.trade-row:nth-child(even) {
+    background: rgba(255,255,255,0.02);
 }
 
+.trade-row.buy .price {
+    color: #f97316; /* Price explicitly Orange as requested */
+}
 .trade-row.sell .price {
-    color: #ff3333;
+    color: #f97316; /* Price explicitly Orange as requested */
 }
 
 .amount {
-    color: #ddd;
+    color: #ffffff;
 }
 
 .time {
-    color: #888;
+    color: #94a3b8;
     font-size: 0.75rem;
 }
 
@@ -64,7 +67,6 @@
         opacity: 0;
         transform: translateY(-10px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);

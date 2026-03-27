@@ -2,25 +2,55 @@ import React from 'react';
 import './Offerings.css';
 
 const Offerings = () => {
-    return (
-        <section className="offerings" id="what-we-offer">
-            <div className="offering-header">
-                <h2>What We Offer</h2>
-                <p>Comprehensive solutions designed for the modern trader.</p>
-            </div>
+    const listItems = [
+        { icon: '🏦', text: 'Funds Always In Your Broker Account' },
+        { icon: '⚙️', text: 'Advanced Risk Management System' },
+        { icon: '🛡️', text: 'Stop Loss & Drawdown Protection' },
+        { icon: '🔒', text: 'Encrypted Software Connection' },
+        { icon: '📊', text: 'Full Transparency & Trade Monitoring' },
+        { icon: '✅', text: 'No Manual Intervention Required' }
+    ];
 
-            <div className="offering-content">
-                <div className="offering-block">
-                    <div className="offering-text">
-                        <h3>Algo Trading</h3>
-                        <p>Algo trading is automated stock trading by computers using pre-set rules like price or timing. It’s fast, emotion-free, and follows strategies like trend following or arbitrage to seek profits.</p>
+    return (
+        <section className="offerings-section" id="what-we-offer">
+            <div className="offerings-grid">
+                {/* Left Content */}
+                <div className="offerings-left">
+                    <div className="section-subtitle">
+                        <span className="line"></span> SECURITY FIRST <span className="line"></span>
+                    </div>
+                    <h2>
+                        Your Funds. <span className="text-blue">Your<br />Control.</span>
+                    </h2>
+                    <p className="offerings-desc">
+                        Fusion AI is designed with security and risk control as the top priority. We never access your funds — the software only executes trades via secure broker integration.
+                    </p>
+                    
+                    <div className="security-list">
+                        {listItems.map((item, index) => (
+                            <div className="security-list-item" key={index}>
+                                <div className="security-icon-box">{item.icon}</div>
+                                <span className="security-text">{item.text}</span>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
-                <div className="offering-block reverse">
-                    <div className="offering-text">
-                        <h3>Automated Trading Algorithms</h3>
-                        <p>Automated trading algorithms analyze markets and execute strategies for you — enabling efficient trading, risk management, and smarter decisions without manual effort.</p>
+                {/* Right Content */}
+                <div className="offerings-right">
+                    <div className="safe-card">
+                        <div className="lock-icon-container">
+                            <span className="huge-lock">🔐</span>
+                        </div>
+                        <h3 className="safe-title">Your Funds Are Always Safe</h3>
+                        <p className="safe-desc">
+                            Fusion AI connects to your broker account through read + execute permissions only. We can never withdraw, transfer, or access your capital directly.
+                        </p>
+                        <div className="green-bullets-box">
+                            <span className="bullet-item"><span className="g-check">✓</span> Non-Custodial</span>
+                            <span className="bullet-item"><span className="g-check">✓</span> Regulated Brokers</span>
+                            <span className="bullet-item"><span className="g-check">✓</span> Full Transparency</span>
+                        </div>
                     </div>
                 </div>
             </div>

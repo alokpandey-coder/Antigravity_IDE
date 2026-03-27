@@ -12,6 +12,7 @@ const TradingDashboard = () => {
     const [selectedAsset, setSelectedAsset] = useState('BTC/USD');
     const [currentPrice, setCurrentPrice] = useState(50000);
     const [chartType, setChartType] = useState('candle');
+    const [timeframe, setTimeframe] = useState('1H');
     const [toasts, setToasts] = useState([]);
 
     // Account State - Initialize from LocalStorage if available
@@ -190,12 +191,37 @@ const TradingDashboard = () => {
 
                 {/* 2. Chart Area */}
                 <div className="panel chart-panel">
-                    <div className="chart-header">
-                        <h2>{selectedAsset} <span className="live-price">{currency.symbol}{currentPrice.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span></h2>
+                    <div className="chart-info-header">
+                        <div className="chart-info-main">
+                            <h2>{selectedAsset}</h2>
+                            <span className="live-price">{currency.symbol}{currentPrice.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
+                        </div>
+                        <div className="chart-info-stats">
+                            <div className="stat-block">
+                                <span className="stat-label">24h Change</span>
+                                <span className="stat-value text-green">+3.4%</span>
+                            </div>
+                            <div className="stat-block">
+                                <span className="stat-label">24h Vol</span>
+                                <span className="stat-value">{currency.symbol}14.2M</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="timeframe-tabs">
+                        {['1M', '5M', '15M', '1H', '4H', '1D'].map(tf => (
+                            <button 
+                                key={tf} 
+                                className={timeframe === tf ? 'active' : ''} 
+                                onClick={() => setTimeframe(tf)}
+                            >
+                                {tf}
+                            </button>
+                        ))}
                     </div>
 
                     <div className="chart-container-main">
-                        <TradingChart symbol={selectedAsset} onPriceUpdate={handlePriceUpdate} chartType={chartType} />
+                        <TradingChart symbol={selectedAsset} onPriceUpdate={handlePriceUpdate} chartType={chartType} timeframe={timeframe} />
                     </div>
 
                     <div className="positions-panel">
@@ -318,8 +344,19 @@ const TradingDashboard = () => {
                                 </div>
                             </div>
 
-                            <div className="est-cost">
-                                Margin Required: {currency.symbol}{((currentPrice * orderAmount) / leverage).toLocaleString(undefined, { maximumFractionDigits: 2 })}
+                            <div className="margin-summary">
+                                <div className="summary-row">
+                                    <span>Margin Required:</span>
+                                    <span>{currency.symbol}{((currentPrice * orderAmount) / leverage).toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
+                                </div>
+                                <div className="summary-row">
+                                    <span>Est. Fee (0.1%):</span>
+                                    <span>{currency.symbol}{((currentPrice * orderAmount) * 0.001).toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
+                                </div>
+                                <div className="summary-row total">
+                                    <span>Total Cost:</span>
+                                    <span>{currency.symbol}{(((currentPrice * orderAmount) / leverage) + ((currentPrice * orderAmount) * 0.001)).toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
+                                </div>
                             </div>
 
                             <div className="order-buttons">

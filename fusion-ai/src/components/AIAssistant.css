@@ -6,14 +6,14 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: #000;
+    background: linear-gradient(135deg, #f97316, #ef4444);
     border: none;
     cursor: pointer;
     z-index: 2000;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 20px rgba(0, 242, 255, 0.4);
+    box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -44,10 +44,17 @@
     right: -2px;
     bottom: -2px;
     border-radius: 50%;
-    background: linear-gradient(45deg, #00f2ff, #0011ff, #00f2ff);
+    background: linear-gradient(45deg, #f97316, #fb923c, #f97316);
     z-index: 1;
     animation: spinRing 3s linear infinite;
     filter: blur(2px);
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .ai-ring {
+        animation: none;
+    }
 }
 
 @keyframes spinRing {
@@ -239,5 +246,15 @@
 
     100% {
         opacity: 0.3;
+    }
+}
+
+@media (max-width: 768px) {
+    .ai-popup {
+        width: 92vw;
+        right: 4vw;
+        bottom: 90px;
+        height: 65vh;
+        max-height: 500px;
     }
 }

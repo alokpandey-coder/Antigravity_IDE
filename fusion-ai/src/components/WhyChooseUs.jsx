@@ -1,47 +1,49 @@
 import React from 'react';
-import teamRobots from '../assets/team_robots.png';
 import './WhyChooseUs.css';
 
 const WhyChooseUs = () => {
+    const brokers = [
+        "IC Markets", "Exness", "Pepperstone", "XM Group", "FP Markets", 
+        "FTMO", "Tickmill", "HFM", "Admirals", "Fusion Markets", 
+        "BlackBull Markets", "EightCap", "Vantage", "OctaFX", "ThinkMarkets", 
+        "Axi", "Global Prime", "RoboForex", "NXG Market"
+    ];
+
     return (
-        <section className="why-us" id="why-us">
-            <h2 className="section-title">Streamline Your Trading Process</h2>
-            <div className="why-container">
-                <div className="why-image">
-                    <img src={teamRobots} alt="FusionAI Team" className="team-robots floating" />
+        <section className="why-choose-us-section" id="brokers">
+            <div className="brokers-container">
+                <div className="brokers-header">
+                    <div className="section-subtitle center">
+                        <span className="line"></span> TRUSTED BROKERS <span className="line"></span>
+                    </div>
+                    <h2>
+                        Compatible With <span className="text-gradient-purple">Global Brokers</span>
+                    </h2>
+                    <p className="brokers-desc">
+                        Fusion AI integrates seamlessly with the world's most trusted regulated Forex brokers. You keep full control of your funds.
+                    </p>
                 </div>
-                <div className="why-content">
-                    <div className="streamline-item">
-                        <div className="check-icon">✅</div>
-                        <div className="streamline-text">
-                            <h3>Manage Your Portfolio</h3>
-                            <p>Link all your broker accounts and effortlessly manage them through our trading terminal—completely free!</p>
-                        </div>
-                    </div>
 
-                    <div className="streamline-item">
-                        <div className="check-icon">✅</div>
-                        <div className="streamline-text">
-                            <h3>Trailing Features</h3>
-                            <p>Monitor price movements and automate your buy/sell actions when the trend shifts direction.</p>
-                        </div>
+                <div className="brokers-marquee-wrapper">
+                    <div className="brokers-marquee-content">
+                        {brokers.map((broker, index) => (
+                            <div className="broker-tag" key={`b1-${index}`}>
+                                {broker}
+                            </div>
+                        ))}
+                        {brokers.map((broker, index) => (
+                            <div className="broker-tag" key={`b2-${index}`}>
+                                {broker}
+                            </div>
+                        ))}
                     </div>
+                </div>
 
-                    <div className="streamline-item">
-                        <div className="check-icon">✅</div>
-                        <div className="streamline-text">
-                            <h3>Trading Programs</h3>
-                            <p>Effortlessly copy other traders or trade autonomously using our advanced trading AI.</p>
-                        </div>
-                    </div>
-
-                    <div className="streamline-item">
-                        <div className="check-icon">✅</div>
-                        <div className="streamline-text">
-                            <h3>Trading Algos</h3>
-                            <p>Utilize tools like DCA, market-making, arbitrage, or our free charting software.</p>
-                        </div>
-                    </div>
+                <div className="brokers-footer">
+                    <span className="small-shield-icon">🛡️</span>
+                    <span className="footer-text">
+                        Your funds remain in your broker account. Fusion AI never takes custody of your funds.
+                    </span>
                 </div>
             </div>
         </section>

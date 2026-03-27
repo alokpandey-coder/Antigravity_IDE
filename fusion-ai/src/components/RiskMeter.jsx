@@ -48,86 +48,96 @@ const RiskMeter = () => {
     return (
         <section className="risk-meter-section">
             <div className="risk-meter-container">
-                <h3>Investment Risk Simulator</h3>
-                <p>Understand potential outcomes before you invest.</p>
+                <div className="risk-header">
+                    <h3>Investment Risk Simulator</h3>
+                    <p>Understand potential outcomes before you invest.</p>
+                </div>
+                
+                <div className="risk-main-grid">
+                    {/* Left Column: Inputs/Controls */}
+                    <div className="risk-left-column">
+                        <div className="controls-grid">
+                            <div className="input-group">
+                                <label>Investment Amount ({currency.symbol})</label>
+                                <input
+                                    type="number"
+                                    value={investment}
+                                    onChange={handleInvestmentChange}
+                                    min="100"
+                                />
+                            </div>
 
-                <div className="controls-grid">
-                    <div className="input-group">
-                        <label>Investment Amount ({currency.symbol})</label>
-                        <input
-                            type="number"
-                            value={investment}
-                            onChange={handleInvestmentChange}
-                            min="100"
-                        />
-                    </div>
+                            <div className="input-group">
+                                <label>Strategy Mode</label>
+                                <div className="mode-toggles">
+                                    <button
+                                        className={`mode-btn ${riskMode === 'Conservative' ? 'active' : ''}`}
+                                        onClick={() => handleModeChange('Conservative')}
+                                    >Conservative</button>
+                                    <button
+                                        className={`mode-btn ${riskMode === 'Aggressive' ? 'active' : ''}`}
+                                        onClick={() => handleModeChange('Aggressive')}
+                                    >Aggressive</button>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div className="input-group">
-                        <label>Strategy Mode</label>
-                        <div className="mode-toggles">
-                            <button
-                                className={`mode-btn ${riskMode === 'Conservative' ? 'active' : ''}`}
-                                onClick={() => handleModeChange('Conservative')}
-                            >Conservative</button>
-                            <button
-                                className={`mode-btn ${riskMode === 'Aggressive' ? 'active' : ''}`}
-                                onClick={() => handleModeChange('Aggressive')}
-                            >Aggressive</button>
+                        <div className="input-group full-width">
+                            <div className="duration-header">
+                                <label>Investment Duration (Months)</label>
+                                <input
+                                    type="number"
+                                    min="1"
+                                    max="60"
+                                    value={duration}
+                                    onChange={(e) => {
+                                        const val = e.target.value === '' ? '' : Math.max(1, Math.min(60, Number(e.target.value)));
+                                        setDuration(val);
+                                    }}
+                                    onBlur={(e) => {
+                                        if (duration === '' || duration < 1) setDuration(1);
+                                    }}
+                                    className="duration-input"
+                                />
+                            </div>
+                            <input
+                                type="range"
+                                min="1"
+                                max="24"
+                                value={duration || 1}
+                                onChange={(e) => setDuration(Number(e.target.value))}
+                                className="duration-slider"
+                            />
                         </div>
                     </div>
-                </div>
 
-                <div className="input-group full-width">
-                    <div className="duration-header">
-                        <label>Investment Duration (Months)</label>
-                        <input
-                            type="number"
-                            min="1"
-                            max="60"
-                            value={duration}
-                            onChange={(e) => {
-                                const val = e.target.value === '' ? '' : Math.max(1, Math.min(60, Number(e.target.value)));
-                                setDuration(val);
-                            }}
-                            onBlur={(e) => {
-                                if (duration === '' || duration < 1) setDuration(1);
-                            }}
-                            className="duration-input"
-                        />
-                    </div>
-                    <input
-                        type="range"
-                        min="1"
-                        max="24"
-                        value={duration || 1}
-                        onChange={(e) => setDuration(Number(e.target.value))}
-                        className="duration-slider"
-                    />
-                </div>
+                    {/* Right Column: Output/Result */}
+                    <div className="risk-right-column">
+                        <div className="risk-display">
+                            <div className="risk-gauge">
+                                <div
+                                    className="risk-needle"
+                                    style={{
+                                        transform: `rotate(${riskLevel === 'Low' ? -45 : riskLevel === 'Medium' ? 0 : 45}deg)`,
+                                        borderColor: getRiskColor()
+                                    }}
+                                ></div>
+                            </div>
+                            <div className="risk-text" style={{ color: getRiskColor() }}>
+                                Risk Level: {riskLevel}
+                            </div>
+                        </div>
 
-                <div className="risk-display">
-                    <div className="risk-gauge">
-                        <div
-                            className="risk-needle"
-                            style={{
-                                transform: `rotate(${riskLevel === 'Low' ? -45 : riskLevel === 'Medium' ? 0 : 45}deg)`,
-                                borderColor: getRiskColor()
-                            }}
-                        ></div>
-                    </div>
-                    <div className="risk-text" style={{ color: getRiskColor() }}>
-                        Risk Level: {riskLevel}
-                    </div>
-                </div>
-
-                <div className="simulation-results">
-                    <div className="result-item">
-                        <span>Est. Profit ({duration} mo)</span>
-                        <span className="value text-green">+{currency.symbol}{(investment * profit * (duration / 12)).toFixed(2)}</span>
-                    </div>
-                    <div className="result-item">
-                        <span>Max Risk (Est.)</span>
-                        <span className="value text-red">-{currency.symbol}{(investment * loss).toFixed(2)}</span>
+                        <div className="simulation-results">
+                            <div className="result-item">
+                                <span>Est. Profit ({duration} mo)</span>
+                                <span className="value text-green">+{currency.symbol}{(investment * profit * (duration / 12)).toFixed(2)}</span>
+                            </div>
+                            <div className="result-item">
+                                <span>Max Risk (Est.)</span>
+                                <span className="value text-red">-{currency.symbol}{(investment * loss).toFixed(2)}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

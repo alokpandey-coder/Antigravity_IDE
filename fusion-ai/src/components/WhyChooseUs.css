@@ -1,56 +1,128 @@
-.why-us {
-    padding: 5rem 5%;
-    background: #000;
-}
-
-.why-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-}
-
-.team-robots {
-    width: 100%;
-    max-width: 600px;
-    filter: drop-shadow(0 0 20px rgba(0, 242, 255, 0.2));
-}
-
-.streamline-item {
+.why-choose-us-section {
+    padding: 100px 5%;
+    background-color: var(--color-offwhite, #F4F6FA);
+    color: var(--color-navy, #0A0F1E);
     display: flex;
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
-    align-items: flex-start;
-}
-
-.check-icon {
-    background: #00f2ff;
-    color: #000;
-    width: 30px;
-    height: 30px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    font-weight: bold;
-    flex-shrink: 0;
-    margin-top: 5px;
+    align-items: center;
 }
 
-.streamline-text h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
+.brokers-container {
+    max-width: 1000px;
+    width: 100%;
+    text-align: center;
 }
 
-.streamline-text p {
-    color: var(--color-text-muted);
-    font-size: 1rem;
+.brokers-header {
+    margin-bottom: 3rem;
+}
+
+.brokers-header h2 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    font-weight: 800;
+    margin: 1rem 0;
+    color: var(--color-navy, #0A0F1E);
+}
+
+.brokers-desc {
+    font-size: 1.1rem;
+    color: #5a6270;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.brokers-marquee-wrapper {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.brokers-marquee-content {
+    display: flex;
+    gap: 1.2rem;
+    width: max-content;
+    animation: marqueeBrokers 35s linear infinite;
+}
+
+@keyframes marqueeBrokers {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .brokers-marquee-content {
+        animation: none !important;
+    }
+}
+
+.broker-tag {
+    background: var(--color-charcoal, #1A1A2E);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 16px 32px;
+    border-radius: 40px; /* changed to pill/badge */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: default;
+    white-space: nowrap;
+}
+
+.brokers-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.small-shield-icon {
+    font-size: 1.2rem;
+    filter: drop-shadow(0 0 5px #4b7bff);
+}
+
+.footer-text {
+    font-size: 0.95rem;
+    color: #5a6270;
+    letter-spacing: 0.5px;
 }
 
 @media (max-width: 968px) {
-    .why-container {
-        grid-template-columns: 1fr;
+    .brokers-header h2 {
+        font-size: clamp(2rem, 4vw, 2.8rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .brokers-marquee-wrapper {
+        mask-image: none;
+        -webkit-mask-image: none;
+    }
+    .brokers-marquee-content {
+        display: flex;
+        flex-wrap: nowrap;
+        animation: marqueeBrokers 20s linear infinite;
+        width: max-content;
+        gap: 1rem;
+    }
+    .broker-tag {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 600px) {
+    .brokers-header h2 {
+        font-size: clamp(1.8rem, 5vw, 2.2rem);
+    }
+    .brokers-footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+        padding: 0 10px;
     }
 }

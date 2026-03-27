@@ -1,6 +1,6 @@
 .faq-section {
     padding: 6rem 5%;
-    background: #0f0f0f;
+    background: #0d0d0d;
     color: #fff;
 }
 
@@ -25,9 +25,9 @@
 }
 
 .faq-item.active {
-    border-color: #3b82f6;
-    background: #111;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-color: var(--color-primary);
+    background: #111111;
+    box-shadow: 0 4px 15px rgba(243, 108, 45, 0.15);
 }
 
 .faq-question {
@@ -45,7 +45,7 @@
 
 .faq-icon {
     font-size: 1.5rem;
-    color: #3b82f6;
+    color: var(--color-primary);
     font-weight: bold;
     transition: transform 0.3s;
 }
